@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:id="@+id/parentBackground">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acara : "
+            android:id="@+id/headerAcara"/>
+        <TextView
+            android:layout_toEndOf="@id/headerAcara"
+            android:layout_toRightOf="@id/headerAcara"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/agendaAcara"
+            android:text="Rapat Kuy"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lokasi : "
+            android:id="@+id/headerLokasi"/>
+        <TextView
+            android:layout_toEndOf="@id/headerLokasi"
+            android:layout_toRightOf="@id/headerLokasi"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/agendaLokasi"
+            android:text="SMK WIkrama"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Waktu : "
+            android:id="@+id/headerWaktu"/>
+        <TextView
+            android:layout_toEndOf="@id/headerWaktu"
+            android:layout_toRightOf="@id/headerWaktu"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/agendaWaktu"
+            android:text="10 : 10 PM, 10/Jan/2019"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repeat : "
+            android:id="@+id/headerRepeat"/>
+        <TextView
+            android:layout_toEndOf="@id/headerRepeat"
+            android:layout_toRightOf="@id/headerRepeat"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/agendaRepeat"
+            android:text="Ya"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+</LinearLayout>
