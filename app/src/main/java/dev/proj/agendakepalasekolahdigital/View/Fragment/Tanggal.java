@@ -1,12 +1,22 @@
 package dev.proj.agendakepalasekolahdigital.View.Fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import java.util.Calendar;
 
 import dev.proj.agendakepalasekolahdigital.R;
 
@@ -61,11 +71,65 @@ public class Tanggal extends Fragment {
         }
     }
 
+    View rootView;
+    MaterialCalendarView calendarView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tanggal, container, false);
+        rootView = inflater.inflate(R.layout.fragment_tanggal, container, false);
+        calendarView = rootView.findViewById(R.id.calendarView);
+
+        setupCalendar();
+
+        return rootView;
+    }
+
+    private void setupCalendar(){
+        Calendar currentCal = Calendar.getInstance();
+        currentCal.clear(Calendar.HOUR_OF_DAY);
+        currentCal.clear(Calendar.MINUTE);
+        currentCal.clear(Calendar.SECOND);
+        currentCal.clear(Calendar.MILLISECOND);
+
+        calendarView.addDecorator(new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                return day.getCalendar().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                view.addSpan(new ForegroundColorSpan(Color.RED));
+            }
+        });
+        calendarView.setSelectedDate(currentCal.getTime());
+        calendarView.setSelected(false);
+        calendarView.setClickable(false);
+        calendarView.dispatchSetSelected(false);
+        calendarView.state().edit()
+                .setMinimumDate(
+                        CalendarDay.from(2000, 1, 1)
+                )
+                .setMaximumDate(
+                        CalendarDay.from(2050, 12, 31)
+                )
+                .setCalendarDisplayMode(CalendarMode.MONTHS)
+                .commit();
+
+        calendarView.addDecorator(new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                return day.getCalendar().get(Calendar.DAY_OF_MONTH) == 19 &&
+                        day.getCalendar().get(Calendar.MONTH) == 2 - 1 &&
+                        day.getCalendar().get(Calendar.YEAR) == 2019;
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                view.addSpan(new ForegroundColorSpan(Color.parseColor("#e2680b")));
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
